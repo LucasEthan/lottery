@@ -8,6 +8,8 @@ winning_num = []
 end
 
 puts "The winning numbers are:"
-6.times do |i|
-  puts "[#{i + 1}] #{winning_num << rand(1..20)}"
+6.times do
+  winning_num << rand(1..20)
 end
+
+puts "[1] #{winning_num}"
