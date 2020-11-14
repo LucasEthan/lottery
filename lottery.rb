@@ -13,3 +13,5 @@ puts "The winning numbers are:"
 end
 
 puts "[1] #{winning_num}"
+
+puts "You have guessed #{(winning_num & numbers).length} numbers"
