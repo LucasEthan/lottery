@@ -9,7 +9,13 @@ end
 
 puts "The winning numbers are:"
 6.times do
-  winning_num << rand(1..20)
+  loop do
+    winning_numbers = rand(1..20)
+    unless winning_num.include?(winning_numbers)
+      winning_num << winning_numbers
+      break
+    end
+  end
 end
 
 puts "[1] #{winning_num}"
