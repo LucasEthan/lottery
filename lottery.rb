@@ -1,24 +1,35 @@
 #!/usr/bin/env ruby
 
+class InputError < StandardError
+end
+
 numbers = []
 winning_numbers = []
-6.times do |i|
-  print "[#{i + 1}] Enter a number between 1 and 20: "
-  numbers << gets.to_i
-end
 
-puts "The winning numbers are:"
-6.times do
-  loop do
-    winning_number = rand(1..20)
-    unless winning_numbers.include?(winning_number)
-      winning_numbers << winning_number
-      break
+begin
+  6.times do |i|
+    print "[#{i + 1}] Enter a number between 1 and 20: "
+    numbers << gets.to_i
+    number = gets.to_i
+    raise InputError if numbers.include?(number)
+rescue InputError
+  puts "You must not enter the same number"
+  retry
+end
+  end
+
+  puts "The winning numbers are:"
+  6.times do
+    loop do
+      winning_number = rand(1..20)
+      unless winning_numbers.include?(winning_number)
+        winning_numbers << winning_number
+        break
+      end
     end
   end
-end
 
-puts winning_numbers
+  puts winning_numbers
 
-puts "You have guessed #{(winning_numbers & numbers).length} numbers"
-puts "The numbers you were able to guess are #{winning_numbers & numbers}"
+  puts "You have guessed #{(winning_numbers & numbers).length} numbers"
+  puts "The numbers you were able to guess are #{winning_numbers & numbers}"
